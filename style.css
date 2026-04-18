@@ -274,10 +274,85 @@ ul, ol { list-style: none; }
   50% { transform: translate(20px, -30px) scale(1.05); }
 }
 
-.hero-content {
-  max-width: 650px;
+.hero .container {
   position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.hero-content {
+  max-width: 820px;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.hero-content .hero-buttons,
+.hero-content .hero-stats {
+  justify-content: center;
+}
+
+.hero-content .hero-stats {
+  display: inline-flex;
+}
+
+.hero-side {
+  position: absolute;
+  top: 50%;
+  width: 420px;
+  height: auto;
   z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 20px 60px rgba(0,0,0,.45));
+  will-change: transform;
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 45%, rgba(0,0,0,.85) 65%, transparent 100%);
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 45%, rgba(0,0,0,.85) 65%, transparent 100%);
+}
+
+.hero-side-left {
+  left: -60px;
+  transform: translateY(-50%) rotate(-18deg);
+  animation: pulseLeft 3.5s ease-in-out infinite;
+}
+
+.hero-side-right {
+  right: -60px;
+  transform: translateY(-50%) rotate(18deg) scaleX(-1);
+  animation: pulseRight 3.5s ease-in-out infinite;
+}
+
+@keyframes pulseLeft {
+  0%, 100% { transform: translateY(-50%) rotate(-18deg) scale(1); }
+  50%      { transform: translateY(-50%) rotate(-18deg) scale(1.08); }
+}
+
+@keyframes pulseRight {
+  0%, 100% { transform: translateY(-50%) rotate(18deg) scaleX(-1) scale(1); }
+  50%      { transform: translateY(-50%) rotate(18deg) scaleX(-1) scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-side { animation: none; }
+}
+
+@media (max-width: 1100px) {
+  .hero-side { width: 340px; }
+  .hero-side-left { left: -100px; }
+  .hero-side-right { right: -100px; }
+}
+
+@media (max-width: 860px) {
+  .hero-side { width: 260px; opacity: .55; }
+  .hero-side-left { left: -140px; }
+  .hero-side-right { right: -140px; }
+}
+
+@media (max-width: 560px) {
+  .hero-side { width: 200px; opacity: .35; }
+  .hero-side-left { left: -120px; }
+  .hero-side-right { right: -120px; }
 }
 
 .hero h1 {
