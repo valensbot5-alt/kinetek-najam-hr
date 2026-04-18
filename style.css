@@ -350,9 +350,21 @@ ul, ol { list-style: none; }
 }
 
 @media (max-width: 560px) {
-  .hero-side { width: 220px; opacity: .35; }
-  .hero-side-left { left: -110px; }
-  .hero-side-right { right: -110px; }
+  .hero-side { width: 260px; opacity: .28; }
+  .hero-side-left { left: -100px; top: 35%; }
+  .hero-side-right { display: none; }
+  .hero { min-height: 70vh; padding: 100px 0 60px; }
+  .hero-content { padding: 0 8px; }
+  .hero h1 { font-size: clamp(1.75rem, 7vw, 2.25rem); }
+  .hero-stats { gap: 20px; padding-top: 24px; }
+  .hero-stat { padding-right: 20px; }
+  .hero-stat strong { font-size: 1.75rem; }
+  .hero-stat span { font-size: 11px; letter-spacing: .5px; }
+}
+
+@media (max-width: 400px) {
+  .hero-side-left { display: none; }
+  .hero { min-height: 60vh; }
 }
 
 .hero h1 {
