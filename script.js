@@ -80,4 +80,23 @@
     });
   });
 
+  /* Cookie banner */
+  var cookieBanner = document.getElementById('cookie-banner');
+  if(cookieBanner){
+    var storageKey = 'cookie_consent';
+    var consent = null;
+    try { consent = localStorage.getItem(storageKey); } catch(e) {}
+    if(!consent){
+      setTimeout(function(){ cookieBanner.classList.add('visible'); }, 600);
+    }
+    var acceptBtn = cookieBanner.querySelector('[data-cookie-accept]');
+    var declineBtn = cookieBanner.querySelector('[data-cookie-decline]');
+    function saveConsent(value){
+      try { localStorage.setItem(storageKey, value); } catch(e) {}
+      cookieBanner.classList.remove('visible');
+    }
+    if(acceptBtn) acceptBtn.addEventListener('click', function(){ saveConsent('accepted'); });
+    if(declineBtn) declineBtn.addEventListener('click', function(){ saveConsent('declined'); });
+  }
+
 })();
